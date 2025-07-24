@@ -12,7 +12,7 @@
   </picture>
 </div>
 
-# <nome-do-repositório>
+# Agenda Palestrinha
 
 [Versão em Português](/README.md)
 
@@ -42,7 +42,7 @@ Make sure to read these files carefully before contributing. If you have any dif
 
 ## ❤️ Contributors
 
-[![contributors](https://contrib.rocks/image?repo=cumbucadev/generic-template)](https://github.com/cumbucadev/generic-template/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=cumbucadev/agenda-palestrinha)](https://github.com/cumbucadev/agenda-palestrinha/graphs/contributors)
 
 [github-discussions-doc]: https://docs.github.com/discussions
 [github-discussions]: https://github.com/cumbucadev/<nome-do-repositório>/discussions
