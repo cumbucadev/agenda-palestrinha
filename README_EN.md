@@ -5,7 +5,7 @@
       srcset="https://github.com/cumbucadev/design/raw/main/images/logo-dark-transparent.png"
     >
     <img
-      alt="Logo do Cumbuca Dev"
+      alt="Cumbuca Dev Logo"
       src="https://github.com/cumbucadev/design/raw/main/images/logo-light-transparent.png"
       width="20%"
     >
@@ -15,16 +15,21 @@
 # Agenda Palestrinha
 
 [Versão em Português](/README.md)
-
+## Introduction
+Agenda Palestrinha is a repository developed to facilitate the organization of events and talks, allowing users to create, edit, and view schedules in a simple and intuitive way. This repository contains information on how to contribute and interact with the community.
+## Events
+Check out the events happening in the Cumbuca Dev community in the table below:
+Event | Date/Time | Location/Link | Format | Description |
+| --- | --- | --- | --- | --- |
 ## 💬 New Features and Reporting Bugs
 
-If you would like to suggest new features or report bugs, just create a new [issue][github-issues] and we will respond there!
+If you want to suggest new features or report bugs, just create a new [issue][github-issues] and we will respond there!
 
 (To learn more about GitHub issues, check out the [official GitHub documentation][github-issues-doc]).
 
 ## 💡 Questions? Ideas?
 
-Do you have questions about how to use the library? New ideas for the project? Want to share something with us? Feel free to create a topic in our [Discussions][github-discussions], and we’ll interact with you there!
+Questions about how to use the library? New ideas for the project? Want to share something with us? Feel free to create a topic in our [Discussions][github-discussions] and we’ll interact with you there!
 
 (To learn more about GitHub discussions, check out the [official GitHub documentation][github-discussions-doc]).
 
@@ -42,9 +47,13 @@ Make sure to read these files carefully before contributing. If you have any dif
 
 ## ❤️ Contributors
 
-[![contributors](https://contrib.rocks/image?repo=cumbucadev/agenda-palestrinha)](https://github.com/cumbucadev/agenda-palestrinha/graphs/contributors)
+<a href="https://github.com/cumbucadev/agenda-palestrinha/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=cumbucadev/agenda-palestrinha" />
+</a></br></br>
+
+_Made with [contrib.rocks](https://contrib.rocks)._
 
 [github-discussions-doc]: https://docs.github.com/discussions
 [github-discussions]: https://github.com/cumbucadev/<nome-do-repositório>/discussions
 [github-issues-doc]: https://docs.github.com/issues/tracking-your-work-with-issues/creating-an-issue
-[github-issues]: https://github.com/cumbucadev/<nome-do-repositório>/issues
+[github-issues]: https://github.com/cumbucadev/<nome-do-

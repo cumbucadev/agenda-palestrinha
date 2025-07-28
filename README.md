@@ -15,7 +15,12 @@
 # Agenda Palestrinha
 
 [English Version](/README_EN.md)
-
+## Introdução 
+A Agenda Palestrinha é um repositório desenvolvido para facilitar a organização de eventos e palestras, permitindo que os usuários criem, editem e visualizem agendas de forma simples e intuitiva. Este repositório contém informações sobre como contribuir e interagir com a comunidade.
+## Eventos 
+Confira os eventos que estão acontecendo na comunidade Cumbuca Dev na tabela abaixo:
+Evento | Data/Hora | Local/Link | Modelo | Descrição |
+| --- | --- | --- | --- | --- |
 ## 💬 Novos Funcionalidades e Reportar Bugs
 
 Caso queira sugerir novas funcionalidades ou reportar bugs, basta criar
