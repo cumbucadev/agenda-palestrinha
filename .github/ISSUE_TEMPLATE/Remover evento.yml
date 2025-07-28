@@ -1,0 +1,39 @@
+name: "Remover evento ❌"
+description: Utilize essa opção para solicitar a remoção de um evento já cadastrado.
+title: "(Atenção: O Título da Issue é gerado automaticamente. Não precisa definir um título manualmente aqui.)"
+labels: ["Remover", "template"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Solicitação de Remoção de Evento
+
+
+  - type: input
+    id: event_name
+    attributes:
+      label: Nome do Evento
+      description: Qual o nome do evento que deseja remover?
+      placeholder: "ex: TDC 2025"
+    validations:
+      required: true
+
+
+  - type: textarea
+    id: removal_reason
+    attributes:
+      label: Motivo da Remoção
+      description: Por que o evento deve ser removido?
+      placeholder: "ex: O evento foi cancelado, informações duplicadas, etc."
+    validations:
+      required: true
+
+
+  - type: input
+    id: requester_contact
+    attributes:
+      label: Seu contato
+      description: Como podemos entrar em contato com você para dúvidas sobre esta solicitação?
+      placeholder: "ex: seu@email.com"
+    validations:
+      required: true
