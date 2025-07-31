@@ -69,7 +69,7 @@ body:
       multiple: false
       default: 0
       options:
-        - To Be Announced
+        - A anunciar
         - Janeiro
         - Fevereiro
         - Março
