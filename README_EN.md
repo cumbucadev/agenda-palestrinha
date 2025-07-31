@@ -15,6 +15,7 @@
 # Agenda Palestrinha
 
 [Versão em Português](/README.md)
+
 ## Introduction
 Agenda Palestrinha is a repository developed to facilitate the organization of events and talks, allowing users to create, edit, and view schedules in a simple and intuitive way. This repository contains information on how to contribute and interact with the community.
 
