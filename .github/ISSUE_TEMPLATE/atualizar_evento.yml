@@ -1,0 +1,182 @@
+name: "Atualizar informações de um evento 📅"
+description: Utilize essa opção para atualizar informações de um evento já cadastrado!
+title: "(Atenção: O Título da Issue é gerado automaticamente. Não precisa definir um título manualmente aqui.)"
+labels: ["Atualizar", "template"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Vamos atualizar um evento existente?
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Identifique o Evento a ser Atualizado
+
+  - type: input
+    id: event_name
+    attributes:
+      label: Nome do Evento
+      description: Qual o nome do evento que deseja atualizar?
+      placeholder: "ex: TDC 2025"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: event_format
+    attributes:
+      label: Formato do Evento
+      description: O evento será remoto, híbrido ou presencial?
+      multiple: false
+      options:
+        - Remoto
+        - Híbrido
+        - Presencial
+    validations:
+      required: true
+
+  - type: input
+    id: event_remote_url
+    attributes:
+      label: URL do Evento (caso remoto ou híbrido)
+      description: Informe a URL do evento se for remoto ou híbrido.
+      placeholder: "ex: https://evento-online.com/"
+    validations:
+      required: false
+ 
+  - type: markdown
+    attributes:
+      value: |
+        ## Atualize as Datas do Evento
+
+  - type: dropdown
+    id: event_year
+    attributes:
+      label: "Ano do Evento"
+      description: "Qual o ano do evento?"
+      multiple: false
+      default: 0
+      options:
+        - "2025"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: event_month
+    attributes:
+      label: "Mês do Evento"
+      description: Em qual mês irá acontecer o evento?
+      multiple: false
+      default: 0
+      options:
+        - A anunciar
+        - Janeiro
+        - Fevereiro
+        - Março
+        - Abril
+        - Maio
+        - Junho
+        - Julho
+        - Agosto
+        - Setembro
+        - Outubro
+        - Novembro
+        - Dezembro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: event_day
+    attributes:
+      label: "Dia do Evento"
+      description: Selecione os dias em que o evento irá ocorrer. (Múltipla escolha)
+      multiple: true
+      options:
+        - "01"
+        - "02"
+        - "03"
+        - "04"
+        - "05"
+        - "06"
+        - "07"
+        - "08"
+        - "09"
+        - "10"
+        - "11"
+        - "12"
+        - "13"
+        - "14"
+        - "15"
+        - "16"
+        - "17"
+        - "18"
+        - "19"
+        - "20"
+        - "21"
+        - "22"
+        - "23"
+        - "24"
+        - "25"
+        - "26"
+        - "27"
+        - "28"
+        - "29"
+        - "30"
+        - "31"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Atualize o Horário do Evento
+
+  - type: input
+    id: event_start_time
+    attributes:
+      label: "Horário de Início"
+      description: "Qual horário o evento irá começar?"
+      placeholder: "ex: 14:00"
+    validations:
+      required: true
+
+  - type: input
+    id: event_end_time
+    attributes:
+      label: "Horário de Término"
+      description: "Qual horário o evento irá terminar?"
+      placeholder: "ex: 18:00"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Atualize os Detalhes do Evento
+
+  - type: textarea
+    id: event_description
+    attributes:
+      label: "Descrição do Evento"
+      description: "Conte mais sobre o evento ou atualize as informações."
+      placeholder: "ex: Este evento é sobre..."
+    validations:
+      required: true
+
+  - type: input
+    id: event_organizer
+    attributes:
+      label: "Nome do Organizador"
+      description: "Quem está organizando o evento?"
+      placeholder: "ex: João Silva"
+    validations:
+      required: true
+
+  - type: input
+    id: event_organizer_contact
+    attributes:
+      label: "Contato do Organizador"
+      description: "Como podemos entrar em contato com o organizador?"
+      placeholder: "ex: joao@email.com"
+    validations:
+      required: true
