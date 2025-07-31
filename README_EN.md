@@ -57,4 +57,4 @@ _Made with [contrib.rocks](https://contrib.rocks)._
 [github-discussions-doc]: https://docs.github.com/discussions
 [github-discussions]: https://github.com/cumbucadev/agenda-palestrinha/discussions
 [github-issues-doc]: https://docs.github.com/issues/tracking-your-work-with-issues/creating-an-issue
-[github-issues]: https://github.com/cumbucadev/<nome-do-
+[github-issues]: https://github.com/cumbucadev/agenda-palestrinha
