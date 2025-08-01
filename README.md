@@ -62,11 +62,7 @@ Certifique-se de ler esses arquivos com atenção antes de contribuir. Se tiver 
 _Made with [contrib.rocks](https://contrib.rocks)._
 
 [github-discussions-doc]: https://docs.github.com/pt/discussions
-[github-discussions]: https://github.com/cumbucadev/<nome-do-repositório>/discussions
+[github-discussions]: https://github.com/cumbucadev/agenda-palestrinha/discussions
 [github-issues-doc]: https://docs.github.com/pt/issues/tracking-your-work-with-issues/creating-an-issue
-[github-issues]: https://github.com/cumbucadev/<nome-do-repositório>/issues
+[github-issues]: https://github.com/cumbucadev/agenda-palestrinha/issues
 
-[github-discussions-doc]: https://docs.github.com/pt/discussions
-[github-discussions]: https://github.com/cumbucadev/<nome-do-repositório>/discussions
-[github-issues-doc]: https://docs.github.com/pt/issues/tracking-your-work-with-issues/creating-an-issue
-[github-issues]: https://github.com/cumbucadev/<nome-do-repositório>/issues
