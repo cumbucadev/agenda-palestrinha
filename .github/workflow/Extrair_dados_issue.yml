@@ -1,4 +1,8 @@
 jobs:
+  on:
+  issues:
+    types: [opened, edited]
+    templates: ["adicionar_evento", "atualizar_evento", "remover_evento"]
   export-issues:
     runs-on: ubuntu-latest
     steps:
