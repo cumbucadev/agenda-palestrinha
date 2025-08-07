@@ -4,29 +4,28 @@ on:
   issues:
     types: [opened, edited]
     templates: ["adicionar_evento", "atualizar_evento", "remover_evento"]
-  
-jobs:
 
+jobs:
   export-issues:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-       
-            - name: Exporta issues
+
+      - name: Exporta issues
         run: |
-          gh issue list --repo ${{ github.repository }} --limit 100 -- name,body,labels --json name,body,labels > issues.json
+          gh issue list --repo ${{ github.repository }} --limit 100 --json title,body,labels > issues.json
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: set up Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
       - name: Verifica tipo da issue
         run: |
-          python .github/scrpt/processa_issue.py
+          python script/processa_issue.py
 
       - name: Cria branch
         run: |
@@ -36,10 +35,10 @@ jobs:
               issues = json.load(f)
           for issue in issues:
               import re
-              nome_branch = re.sub(r'\W+', '_', issue.get("name", ""))
+              nome_branch = re.sub(r'\W+', '_', issue.get("title", ""))
               os.system(f"git switch -c {nome_branch}")
           EOF
-        
+
       - name: Pull
         run: git pull origin main
 
@@ -51,16 +50,14 @@ jobs:
               issues = json.load(f)
           for issue in issues:
               import re
-              nome_branch = re.sub(r'\W+', '_', issue.get("name", ""))
-              mensagem_commit = f"{issue.get('name', '')} - {issue.get('body', 'event_name')}"
+              nome_branch = re.sub(r'\W+', '_', issue.get("title", ""))
+              mensagem_commit = f"{issue.get('title', '')} - {issue.get('body', 'event_name')}"
               os.system('git config --local user.email "jlprcarvalho@gmail.com"')
               os.system('git config --local user.name "GitHub Actions"')
               os.system('git add .')
               os.system(f'git commit -m "{mensagem_commit}"')
               os.system(f'git push origin {nome_branch}')
-              
-        
           EOF
-          
+
       - name: Exclui issues.json
         run: rm issues.json
