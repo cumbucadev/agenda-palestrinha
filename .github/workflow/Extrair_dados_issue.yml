@@ -1,39 +1,33 @@
-jobs:
-  on:
+name: Extrair dados de issues
+
+on:
   issues:
     types: [opened, edited]
     templates: ["adicionar_evento", "atualizar_evento", "remover_evento"]
+  
+jobs:
+
   export-issues:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
        
-      - name: Exporta issues
+            - name: Exporta issues
         run: |
-          gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
           gh issue list --repo ${{ github.repository }} --limit 100 -- name,body,labels --json name,body,labels > issues.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+
       - name: Verifica tipo da issue
         run: |
-          python <<EOF
-          import json
-          with open('issues.json') as f:
-              issues = json.load(f)
-          for issue in issues:
-              if 'Vamos adicionar um novo evento?😁' in [label['name'] for label in issue.get('labels', [])]:
-                  os.system(python script/adicionar_evento.py )
-              elif 'Vamos atualizar um evento existente?' in [label['name'] for label in issue.get('labels', [])]:
-                  os.system(python script/atualizar_evento.py)
-              elif 'Remover evento ❌' in [label['name'] for label in issue.get('labels', [])]:
-                  os.system(python script/remover_evento.py)
-              elif 'Atualizar evento' in [label['name'] for label in issue.get('labels', [])]:
-                  os.system(python script/atualizar_evento.py)
-           
-          EOF
+          python .github/scrpt/processa_issue.py
+
       - name: Cria branch
         run: |
           python <<EOF
@@ -48,6 +42,7 @@ jobs:
         
       - name: Pull
         run: git pull origin main
+
       - name: Commit e push
         run: |
           python <<EOF
@@ -63,7 +58,9 @@ jobs:
               os.system('git add .')
               os.system(f'git commit -m "{mensagem_commit}"')
               os.system(f'git push origin {nome_branch}')
+              
         
           EOF
+          
       - name: Exclui issues.json
         run: rm issues.json
