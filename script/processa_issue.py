@@ -11,20 +11,20 @@ def processa_issue(arquivo):
         issue = json.load(f)[0]  # pega a única issue do arquivo
     
     print(f"Processando issue: {issue['id']}")
-    labels = [normaliza_label(label) for label in issue.get('labels', [])]
+    labels = [normaliza_label(label['name'] if isinstance(label, dict) else label) for label in issue.get('labels', [])]
 
     base_dir = os.path.dirname(os.path.abspath(__file__))
     scripts = {
-        'adicionar': os.path.join(base_dir, 'script', 'adicionar_evento.py'),
-        'atualizar': os.path.join(base_dir, 'script', 'atualizar_evento.py'),
-        'remover': os.path.join(base_dir, 'script', 'excluir_evento.py')
+        'adicionar': os.path.join(base_dir, 'adicionar_evento.py'),
+        'atualizar': os.path.join(base_dir, 'atualizar_evento.py'),
+        'remover': os.path.join(base_dir, 'excluir_evento.py')
     }
 
     for label in labels:
         if label in scripts:
             print(f"Executando script para '{label}'...")
             subprocess.run(
-                ["python", scripts[label], str(issue['id'])],
+                ["py", scripts[label], str(issue['id'])],
                 check=True
             )
             break  # executa só o primeiro script que encontrar correspondente
