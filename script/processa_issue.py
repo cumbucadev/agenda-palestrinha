@@ -1,32 +1,35 @@
 import os
 import json
+import subprocess
+
+def normaliza_label(label):
+    return label.strip().lower()
 
 def processa_issue(arquivo):
-    print(f"Processando issues do arquivo: {arquivo}")
-    with open(arquivo, 'r') as f:
-        issues = json.load(f)
+    print(f"Processando issue do arquivo: {arquivo}")
+    with open(arquivo, 'r', encoding='utf-8') as f:
+        issue = json.load(f)[0]  # pega a única issue do arquivo
     
-    print(f"Encontradas {len(issues)} issues para processar")
-    
-    for issue in issues:
-        labels = [label['name'] for label in issue.get('labels', [])]
-        print(f"Processando issue: {issue.get('title', 'Sem título')}")
-        print(f"Labels encontradas: {labels}")
-        
-        if 'Vamos adicionar um novo evento?🏃' in labels:
-            print("Executando script para adicionar evento")
-            os.system('python script/adicionar_evento.py')
-        elif 'Vamos atualizar um evento existente?' in labels:
-            print("Executando script para atualizar evento")
-            os.system('python script/atualizar_evento.py')
-        elif 'Remover evento 🗑️' in labels:
-            print("Executando script para remover evento")
-            os.system('python script/excluir_evento.py')
-        elif 'Atualizar evento' in labels:
-            print("Executando script para atualizar evento (alternativo)")
-            os.system('python script/atualizar_evento.py')
-        else:
-            print("Nenhuma ação encontrada para esta issue")
+    print(f"Processando issue: {issue['id']}")
+    labels = [normaliza_label(label) for label in issue.get('labels', [])]
+
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    scripts = {
+        'adicionar': os.path.join(base_dir, 'script', 'adicionar_evento.py'),
+        'atualizar': os.path.join(base_dir, 'script', 'atualizar_evento.py'),
+        'remover': os.path.join(base_dir, 'script', 'excluir_evento.py')
+    }
+
+    for label in labels:
+        if label in scripts:
+            print(f"Executando script para '{label}'...")
+            subprocess.run(
+                ["python", scripts[label], str(issue['id'])],
+                check=True
+            )
+            break  # executa só o primeiro script que encontrar correspondente
+    else:
+        print("Nenhum script correspondente às labels encontrado.")
 
 if __name__ == "__main__":
     processa_issue('issues.json')
