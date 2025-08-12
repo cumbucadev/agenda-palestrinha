@@ -14,3 +14,4 @@ jobs:
           echo "Labels: ${{ toJson(github.event.issue.labels) }}"
           echo "Numero: ${{ github.event.issue.number }}"  
           echo "Corpo: ${{ github.event.issue.body }}"
+
