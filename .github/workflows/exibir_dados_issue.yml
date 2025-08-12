@@ -1,13 +1,18 @@
-name: Exibir Dados da Issue
+name: Exibir dados de issue
+
 on:
   issues:
-    types:
-      - opened
-      - edited
+    types: [opened, edited]
 jobs:
-  process_issue:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Imprimir Dados da Issue
-        run: |
-          echo "Issue Body: ${{ github.event.issue.body }}"
+    process-issue:
+        runs-on: ubuntu-24.04
+
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v4
+          - name: Exibir dados da issue
+            run: |
+              echo "Descrição do evento: ${{ gh view issue ${{ github.event.issue.number }} body }}"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              
