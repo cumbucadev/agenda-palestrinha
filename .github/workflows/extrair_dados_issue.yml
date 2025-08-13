@@ -1,0 +1,60 @@
+name: Extrair dados de issues
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  process-issue:
+    runs-on: ubuntu-24.04
+
+    steps:
+      # 1️⃣ Baixar o repositório
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2️⃣ Configurar Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # 3️⃣ Salvar a issue atual em issues.json
+      - name: Exportar dados da issue para JSON
+        run: |
+          echo "Exportando dados da issue atual para issues.json"
+          echo '[{"title": "${{ github.event.issue.title }}", "body": "${{ github.event.issue.body }}", "labels": ${{ toJson(github.event.issue.labels) }} }]' > issues.json
+
+      # 4️⃣ Mostrar conteúdo do issues.json (debug)
+      - name: Mostrar issues.json
+        run: cat issues.json
+
+      # 5️⃣ Rodar script de processamento da issue
+      - name: Processar issue
+        run: python script/processa_issue.py
+
+      # 6️⃣ Criar branch com número da issue
+      - name: Criar branch
+        run: git checkout -b issue-${{ github.event.issue.number }}
+
+      # 7️⃣ Configurar Git
+      - name: Configurar usuário do Git
+        run: |
+          git config --local user.email "jlprcarvalho@gmail.com"
+          git config --local user.name "GitHub Actions"
+
+      # 8️⃣ Commitar alterações com closes
+      - name: Commitar alterações
+        run: |
+          git add .
+          git commit -m "${{ github.event.issue.title }} - ${{ github.event.issue.body }} (closes #${{ github.event.issue.number }})" || echo "Sem alterações para commit"
+
+      # 9️⃣ Fazer push para a branch criada
+      - name: Fazer push
+        run: git push origin HEAD
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 🔟 Limpar arquivo temporário
+      - name: Remover issues.json
+        run: rm issues.json
