@@ -10,4 +10,8 @@ jobs:
     steps:
       - name: Imprimir Dados da Issue
         run: |
-          echo "Issue Body: ${{ github.event.issue.body }}"
+          echo "Titulo: ${{ github.event.issue.title }}"     
+          echo "Labels: ${{ toJson(github.event.issue.labels) }}"
+          echo "Numero: ${{ github.event.issue.number }}"  
+          echo "Corpo: ${{ github.event.issue.body }}"
+
