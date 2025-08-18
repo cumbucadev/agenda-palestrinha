@@ -1,6 +1,6 @@
 name: "Remover evento ❌"
 description: Utilize essa opção para solicitar a remoção de um evento já cadastrado.
-title: "(Atenção: O Título da Issue é gerado automaticamente. Não precisa definir um título manualmente aqui.)"
+title: "remover evento"
 labels: ["remover"]
 body:
   - type: markdown
