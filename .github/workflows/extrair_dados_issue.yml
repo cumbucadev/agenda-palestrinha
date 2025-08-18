@@ -11,7 +11,7 @@ jobs:
     steps:
       # 1️⃣ Baixar o repositório
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # 2️⃣ Configurar Python
       - name: Set up Python
