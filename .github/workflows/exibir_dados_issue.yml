@@ -15,3 +15,12 @@ jobs:
           echo "Numero: ${{ github.event.issue.number }}"  
           echo "Corpo: ${{ github.event.issue.body }}"
 
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v5
+          - name: Exibir dados da issue
+            run: |
+              echo "Descrição do evento: ${{ gh view issue ${{ github.event.issue.number }} body }}"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         
