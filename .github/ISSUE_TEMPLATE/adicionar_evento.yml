@@ -1,23 +1,23 @@
-name: "Atualizar informações de um evento 📅"
-description: Utilize essa opção para atualizar informações de um evento já cadastrado!
-title: "atualizar evento"
-labels: ["atualizar"]
+name: "Vamos adicionar um novo evento?😁"
+description: Utilize essa opção para adicionar um novo evento!
+title: "adicionar evento"
+labels: ["adicionar"]
 body:
   - type: markdown
     attributes:
       value: |
-        # Vamos atualizar um evento existente?
+        # Vamos criar um novo evento?
 
   - type: markdown
     attributes:
       value: |
-        ## Identifique o Evento a ser Atualizado
+        ## Informações Gerais do Evento
 
   - type: input
     id: event_name
     attributes:
       label: Nome do Evento
-      description: Qual o nome do evento que deseja atualizar?
+      description: Qual o nome do evento?
       placeholder: "ex: TDC 2025"
     validations:
       required: true
@@ -43,17 +43,17 @@ body:
       placeholder: "ex: https://evento-online.com/"
     validations:
       required: false
- 
+
   - type: markdown
     attributes:
       value: |
-        ## Atualize as Datas do Evento
+        ## Quando o evento vai acontecer?
 
   - type: dropdown
     id: event_year
     attributes:
       label: "Ano do Evento"
-      description: "Qual o ano do evento?"
+      description: "Qual o ano que irá acontecer o evento?"
       multiple: false
       default: 0
       options:
@@ -129,7 +129,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Atualize o Horário do Evento
+        ## Horário do Evento
 
   - type: input
     id: event_start_time
@@ -152,13 +152,13 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Atualize os Detalhes do Evento
+        ## Detalhes Adicionais
 
   - type: textarea
     id: event_description
     attributes:
       label: "Descrição do Evento"
-      description: "Conte mais sobre o evento ou atualize as informações."
+      description: "Conte mais sobre o evento."
       placeholder: "ex: Este evento é sobre..."
     validations:
       required: true

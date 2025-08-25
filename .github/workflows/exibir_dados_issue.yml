@@ -1,26 +1,60 @@
-name: Exibir Dados da Issue
+name: Get Issue Data
 on:
   issues:
     types:
       - opened
       - edited
-jobs:
-  process_issue:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Imprimir Dados da Issue
-        run: |
-          echo "Titulo: ${{ github.event.issue.title }}"     
-          echo "Labels: ${{ toJson(github.event.issue.labels) }}"
-          echo "Numero: ${{ github.event.issue.number }}"  
-          echo "Corpo: ${{ github.event.issue.body }}"
 
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v5
-          - name: Exibir dados da issue
-            run: |
-              echo "Descrição do evento: ${{ gh view issue ${{ github.event.issue.number }} body }}"
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         
+jobs:
+  fetch_issue_data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh
+
+      - name: Authenticate GitHub CLI
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+      - name: Create JSON with issue data
+        run: |
+          mkdir -p issues
+          FILE="issues/issue-${{ github.event.issue.number }}.json"
+          echo "FILE=$FILE" >> $GITHUB_ENV
+          gh issue view ${{ github.event.issue.number }} \
+            --repo ${{ github.repository }} \
+            --json number,title,body,labels,assignees,createdAt,updatedAt > "$FILE"
+
+      - name: Display issue data
+        run: cat "$FILE"
+      
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Rodar o script de processamento
+        run: |
+          python script/processa_issue.py "$FILE"
+
+      - name: Commit to separate branch
+        run: |
+          BRANCH="issue-${{ github.event.issue.number }}"
+          git switch main || git switch -c main
+          git pull origin main
+          git switch -C "$BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$FILE" script/processa_issue.py dados_extraidos.txt
+          git commit -m "Adding issue data #${{ github.event.issue.number }}" || echo "Nothing to commit"
+          git push origin "$BRANCH" --force
