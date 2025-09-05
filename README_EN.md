@@ -16,13 +16,11 @@
 
 [Versão em Português](/README.md)
 
-## Introduction
-Agenda Palestrinha is a repository developed to facilitate the organization of events and talks, allowing users to create, edit, and view schedules in a simple and intuitive way. This repository contains information on how to contribute and interact with the community.
+Introduction
+Agenda Palestrinha is a repository developed to make it easier to keep track of talk submission dates for major technology events, allowing users to create, edit, and view schedules in a simple and intuitive way.
 
 ## Events
-Check out the events happening in the Cumbuca Dev community in the table below:
-Event | Date/Time | Location/Link | Format | Description |
-| --- | --- | --- | --- | --- |
+Check out the events happening in the Cumbuca Dev community:
 ## 💬 New Features and Reporting Bugs
 
 If you want to suggest new features or report bugs, just create a new [issue][github-issues] and we will respond there!
