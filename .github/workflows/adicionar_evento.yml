@@ -1,0 +1,14 @@
+name: Exibir informações da Issue
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  mostrar-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exibir número e labels da issue
+        run: |
+          echo "Número da issue: ${{ github.event.issue.number }}"
+          echo "Labels: ${{ toJson(github.event.issue.labels) }}"
