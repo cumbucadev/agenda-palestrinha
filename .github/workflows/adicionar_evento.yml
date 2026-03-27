@@ -7,9 +7,21 @@ on:
 jobs:
   mostrar-info:
     runs-on: ubuntu-latest
+    env:
+      NOME_ARQUIVO: issue_data.json
     steps:
-      - name: Exibir número e labels da issue
+      - name: Verificar checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Converter issue para JSON
+        uses: zentered/issue-forms-body-parser@v2.0.0
+        id: parse
+
+      - name: Salvar dados da issue em um arquivo
         run: |
+          echo '${{ steps.parse.outputs.data }}' > $NOME_ARQUIVO
+        
+  
           echo "Número da issue: ${{ github.event.issue.number }}"
           echo "Labels: ${{ toJson(github.event.issue.labels) }}"
       - name: Converter issue para JSON
@@ -24,8 +36,10 @@ jobs:
         if: contains(join(github.event.issue.labels.*.name, ','), '🗓️ evento:adicionar')
         run: |
           echo "A issue contém a label 'evento:adicionar'."
-          # Adicione aqui o código para processar a issue conforme necessário
+          python3 backend/adicionar_evento.py ${NOME_ARQUIVO}
+         
 
+      
       - name: Verificar se a issue NÃO tem a label 'evento:adicionar'
         if: ${{ !contains(join(github.event.issue.labels.*.name, ','), '🗓️ evento:adicionar') }}
         run: |
