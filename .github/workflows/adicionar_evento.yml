@@ -11,7 +11,7 @@ jobs:
       NOME_ARQUIVO: issue_data.json
     steps:
       - name: Verificar checkout do repositório
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Converter issue para JSON
         uses: zentered/issue-forms-body-parser@v2.2.0
