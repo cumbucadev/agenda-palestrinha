@@ -24,25 +24,19 @@ jobs:
   
           echo "Número da issue: ${{ github.event.issue.number }}"
           echo "Labels: ${{ toJson(github.event.issue.labels) }}"
+
       - name: Converter issue para JSON
         uses: zentered/issue-forms-body-parser@v2.0.0
-        id: parse
-      - name: Salvar dados da issue em um arquivo
-        run: |
-          echo '${{ steps.parse.outputs.data }}' > issue_data.json
-          cat issue_data.json
-  #abstrair para adicionar_evento.py
-      - name: Verificar se a issue tem a label 'evento:adicionar'
-        if: contains(join(github.event.issue.labels.*.name, ','), '🗓️ evento:adicionar')
-        run: |
-          echo "A issue contém a label 'evento:adicionar'."
-          python3 backend/adicionar_evento.py ${NOME_ARQUIVO}
-         
+        id: parse"
 
-      
-      - name: Verificar se a issue NÃO tem a label 'evento:adicionar'
-        if: ${{ !contains(join(github.event.issue.labels.*.name, ','), '🗓️ evento:adicionar') }}
+      - name: Validar evento na issue
         run: |
-          echo "A issue não contém a label 'evento:adicionar'."
-          echo "JSON da issue: ${{ toJson(steps.parse.outputs.data) }}"
+          python3 script/validar_evento.py >> $GITHUB_OUTPUT
+          if [$GITHUB_OUTPUT == 1]; then
+            echo "A issue não é válida."
+            exit 1
+          else
+            echo "A issue é válida."
+          fi
+  
           # Adicione aqui o código para processar a issue conforme necessário
