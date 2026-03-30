@@ -25,10 +25,6 @@ jobs:
           echo "Número da issue: ${{ github.event.issue.number }}"
           echo "Labels: ${{ toJson(github.event.issue.labels) }}"
 
-      - name: Converter issue para JSON
-        uses: zentered/issue-forms-body-parser@v2.0.0
-        id: parse"
-
       - name: Validar evento na issue
         run: |
           python3 script/validar_evento.py >> $GITHUB_OUTPUT
