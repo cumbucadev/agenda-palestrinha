@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-e-testes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v6
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: pip install -r backend/requirements-dev.txt
+
+      - name: Verificar lint
+        run: |
+          ruff check .
+          ruff format --check .
+
+      - name: Rodar testes
+        run: pytest tests/ -v
