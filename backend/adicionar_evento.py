@@ -3,7 +3,7 @@ import json
 
 def carregar_dados_issues():
 
-    with open("issue_data.json", "r") as file:
+    with open("issue_data.json") as file:
         return json.load(file)
 
 

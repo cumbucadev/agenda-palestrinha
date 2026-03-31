@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "agenda-palestrinha"
 version = "0.1.0"
-description = "Plataforma para acompanhar datas de submissao de palestras (Call4Papers) em eventos de tecnologia"
+description = "Plataforma para acompanhar datas de submissão de palestras (Call4Papers) em eventos de tecnologia"
 readme = "README.md"
 requires-python = ">=3.12"
 license = {file = "LICENSE"}
@@ -46,7 +46,6 @@ addopts = "--cov=backend --cov-report=term-missing"
 
 [tool.coverage.run]
 source = ["backend"]
-omit = ["tests/*"]
 
 [tool.coverage.report]
 show_missing = true
