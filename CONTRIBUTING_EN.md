@@ -77,12 +77,10 @@ agenda-palestrinha/
 │   └── ISSUE_TEMPLATE/     # Issue templates
 ├── backend/
 │   ├── banco_de_dados/     # eventos.json (event data)
-│   ├── adicionar_evento.py # Script to add events
-│   ├── requirements.txt    # Production dependencies
-│   └── requirements-dev.txt # Development dependencies
+│   └── adicionar_evento.py # Script to add events
 ├── tests/                  # Tests with pytest
-├── Makefile                # Shortcuts for common commands
-└── pytest.ini              # pytest configuration
+├── pyproject.toml          # Dependencies and project configuration
+└── Makefile                # Shortcuts for common commands
 ```
 
 ## Questions?

@@ -17,7 +17,7 @@ jobs:
           python-version: "3.12"
 
       - name: Instalar dependências
-        run: pip install -r backend/requirements-dev.txt
+        run: pip install ".[dev]"
 
       - name: Verificar lint
         run: |

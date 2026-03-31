@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=75.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agenda-palestrinha"
+version = "0.1.0"
+description = "Plataforma para acompanhar datas de submissao de palestras (Call4Papers) em eventos de tecnologia"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Cumbuca Dev", email = "cumbucadev@gmail.com"},
+]
+keywords = ["call4papers", "eventos", "tecnologia", "palestras"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: Portuguese (Brazilian)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "jsonschema>=4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.8.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/cumbucadev/agenda-palestrinha"
+Repository = "https://github.com/cumbucadev/agenda-palestrinha"
+Issues = "https://github.com/cumbucadev/agenda-palestrinha/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "--cov=backend --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["backend"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
