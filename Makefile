@@ -1,20 +1,33 @@
 .PHONY: install test lint fix-lint clean
 
+PYTHON ?= python3
+PATHSEP := /
+ifeq ($(OS),Windows_NT)
+PYTHON := py
+VENV_BIN := .venv\Scripts
+PATHSEP := \\
+else
+VENV_BIN := .venv/bin
+endif
+
+PIP := $(VENV_BIN)$(PATHSEP)pip
+PYTEST := $(VENV_BIN)$(PATHSEP)pytest
+RUFF := $(VENV_BIN)$(PATHSEP)ruff
+
 install:
-	python3 -m venv .venv
-	.venv/bin/pip install -e ".[dev]"
+	$(PYTHON) -m venv .venv
+	$(PIP) install -e ".[dev]"
 
 test:
-	.venv/bin/pytest tests/ -v
+	$(PYTEST) tests/ -v
 
 lint:
-	.venv/bin/ruff check .
-	.venv/bin/ruff format --check .
+	$(RUFF) check .
+	$(RUFF) format --check .
 
 fix-lint:
-	.venv/bin/ruff check --fix .
-	.venv/bin/ruff format .
+	$(RUFF) check --fix .
+	$(RUFF) format .
 
 clean:
-	find . -type d -name __pycache__ -exec rm -rf {} +
-	find . -type f -name "*.pyc" -delete
+	$(PYTHON) -c "import os, shutil; [shutil.rmtree(os.path.join(root, d)) for root, dirs, files in os.walk('.') for d in dirs if d == '__pycache__']; [os.remove(os.path.join(root, f)) for root, dirs, files in os.walk('.') for f in files if f.endswith('.pyc')]"

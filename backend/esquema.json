@@ -1,0 +1,298 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Esquema de Evento (formulário de issue)",
+  "type": "object",
+  "properties": {
+    "nome-do-evento": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "site-do-evento": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string", "format": "uri" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "formato-do-evento": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": {
+          "type": "string",
+          "enum": ["Presencial", "Online", "Híbrido"]
+        }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "cidade-deixe-em-branco-se-online": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "estado-provincia-deixe-em-branco-se-online": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "pais-deixe-em-branco-se-online": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "ano-do-primeiro-dia-de-evento": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string", "pattern": "^[0-9]{4}$" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "mes-do-primeiro-dia-de-evento": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": {
+          "type": "string",
+          "enum": [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+          ]
+        }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "dia-do-primeiro-dia-de-evento": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string", "pattern": "^(0[1-9]|[12][0-9]|3[01])$" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "ano-do-ultimo-dia-de-evento": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string", "pattern": "^[0-9]{4}$" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "mes-do-ultimo-dia-de-evento": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": {
+          "type": "string",
+          "enum": [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+          ]
+        }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "dia-do-ultimo-dia-de-evento": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string", "pattern": "^(0[1-9]|[12][0-9]|3[01])$" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "ano-do-primeiro-dia-de-submissao": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string", "pattern": "^[0-9]{4}$" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "mes-do-primeiro-dia-de-submissao": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": {
+          "type": "string",
+          "enum": [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+          ]
+        }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "dia-do-primeiro-dia-de-submissao": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string", "pattern": "^(0[1-9]|[12][0-9]|3[01])$" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "ano-do-ultimo-dia-de-submissao": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string", "pattern": "^[0-9]{4}$" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "mes-do-ultimo-dia-de-submissao": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": {
+          "type": "string",
+          "enum": [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+          ]
+        }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "dia-do-ultimo-dia-de-submissao": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "text": { "type": "string", "pattern": "^(0[1-9]|[12][0-9]|3[01])$" }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "tipos-de-submissao-aceitos": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "array", "items": { "type": "string" } },
+        "text": { "type": "string" },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "checked": { "type": "boolean" },
+              "text": { "type": "string" }
+            },
+            "required": ["checked", "text"]
+          }
+        }
+      },
+      "required": ["title", "content", "text"]
+    },
+    "se-marcou-outros-especifique": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "array", "items": { "type": "string" } },
+        "text": { "type": "string" }
+      },
+      "required": ["title", "content", "text"]
+    }
+  },
+  "required": [
+    "nome-do-evento",
+    "site-do-evento",
+    "formato-do-evento",
+    "ano-do-primeiro-dia-de-evento",
+    "mes-do-primeiro-dia-de-evento",
+    "dia-do-primeiro-dia-de-evento",
+    "ano-do-ultimo-dia-de-evento",
+    "mes-do-ultimo-dia-de-evento",
+    "dia-do-ultimo-dia-de-evento",
+    "ano-do-primeiro-dia-de-submissao",
+    "mes-do-primeiro-dia-de-submissao",
+    "dia-do-primeiro-dia-de-submissao",
+    "ano-do-ultimo-dia-de-submissao",
+    "mes-do-ultimo-dia-de-submissao",
+    "dia-do-ultimo-dia-de-submissao",
+    "tipos-de-submissao-aceitos",
+    "se-marcou-outros-especifique"
+  ]
+}
