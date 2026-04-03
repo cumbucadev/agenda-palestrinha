@@ -8,15 +8,15 @@ from jsonschema import validate
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Caminho absoluto do arquivo de esquema
-caminho_esquema = os.path.join(BASE_DIR, "esquema.json")
+caminho_esquema = os.path.join(BASE_DIR, "esquema_issue_evento.json")
 
 with open(caminho_esquema, encoding="utf-8") as f:
-    esquema_evento = json.load(f)
+    esquema_issue_evento = json.load(f)
 
 
 def validar_evento(evento):
     try:
-        validate(instance=evento, schema=esquema_evento)
+        validate(instance=evento, schema=esquema_issue_evento)
         return True
     except Exception as e:
         print(f"Erro ao validar evento: {e}")
