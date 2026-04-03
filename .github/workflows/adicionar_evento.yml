@@ -25,6 +25,10 @@ jobs:
           echo "Número da issue: ${{ github.event.issue.number }}"
           echo "Labels: ${{ toJson(github.event.issue.labels) }}"
 
-      - name: Executar script de adicionar evento
+      - name: Executar script para validar evento
         run: |
-          python3 backend/adicionar_evento.py
+          python3 backend/validar_evento.py ${{github.workspace}}/$NOME_ARQUIVO
+
+      # - name: Executar script de adicionar evento
+      #   run: |
+      #     python3 backend/adicionar_evento.py

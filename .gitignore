@@ -23,3 +23,6 @@ venv/
 # Claude Code
 CLAUDE.md
 .claude/
+
+#Coverage
+.coverage
