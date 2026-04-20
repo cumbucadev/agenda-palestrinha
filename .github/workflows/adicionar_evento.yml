@@ -3,8 +3,7 @@ name: Exibir informações da Issue
 on:
   issues:
     types: [opened, edited]
-    labels:
-      - '🗓️ evento:adicionar'
+    
 
 jobs:
   mostrar-info:
