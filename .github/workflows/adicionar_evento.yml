@@ -3,6 +3,8 @@ name: Exibir informações da Issue
 on:
   issues:
     types: [opened, edited]
+    labels:
+      - '🗓️ evento:adicionar'
 
 jobs:
   mostrar-info:
@@ -29,6 +31,6 @@ jobs:
         run: |
           python3 backend/validar_evento.py ${{github.workspace}}/$NOME_ARQUIVO
 
-      # - name: Executar script de adicionar evento
-      #   run: |
-      #     python3 backend/adicionar_evento.py
+      - name: Executar script de adicionar evento
+        run: |
+          python3 backend/adicionar_evento.py ${{github.workspace}}/$NOME_ARQUIVO
