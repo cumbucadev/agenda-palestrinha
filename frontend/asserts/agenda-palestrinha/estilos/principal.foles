@@ -1,0 +1,33 @@
+
+cabeca{
+    posicao: fixa;
+    largura: 100%;
+    altura: 5%;
+    exibicao: flex;
+    cor-fundo: roxo;
+    posicao-superior: 0;
+    posicao-esquerda: 0;
+}
+
+.conteudo{
+    exibicao: flex;
+    flex-agrupar: agrupar;
+    espacamento: 15px;
+    margem-superior: 70px;
+    posicao: relativa;
+}
+.evento{
+   largura: 10%;
+    altura: 15%;
+    posicao: relativa;
+    cor-fundo: azul;
+    
+}
+.rodape{
+    posicao: fixa;
+    largura: 100%;
+    altura: 5%;
+    cor-fundo: roxo;
+    posicao-inferior: 0%;
+    posicao-esquerda: 0;
+}

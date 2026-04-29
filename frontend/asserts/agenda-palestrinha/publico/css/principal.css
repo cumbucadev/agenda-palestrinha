@@ -1,0 +1,34 @@
+head {
+    position: fixed;
+    width: 100%;
+    height: 5%;
+    display: flex;
+    background-color: purple;
+    top: 0;
+    left: 0;
+}
+
+.conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 70px;
+    position: relative;
+}
+
+.evento {
+    width: 10%;
+    height: 15%;
+    position: relative;
+    background-color: blue;
+}
+
+.rodape {
+    position: fixed;
+    width: 100%;
+    height: 5%;
+    background-color: purple;
+    bottom: 0%;
+    left: 0;
+}
+

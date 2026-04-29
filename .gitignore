@@ -26,3 +26,6 @@ CLAUDE.md
 
 #Coverage
 .coverage
+
+# Node.js
+node_modules
