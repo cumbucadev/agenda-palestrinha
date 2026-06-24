@@ -7,12 +7,23 @@ on:
 
 jobs:
   mostrar-info:
+  
     runs-on: ubuntu-latest
     env:
       NOME_ARQUIVO: issue_data.json
     steps:
       - name: Verificar checkout do repositório
         uses: actions/checkout@v7
+
+      - name: Configurar Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install .[dev]
 
       - name: Converter issue para JSON
         uses: zentered/issue-forms-body-parser@v3.0.0
@@ -21,10 +32,6 @@ jobs:
       - name: Salvar dados da issue em um arquivo
         run: |
           echo '${{ steps.parse.outputs.data }}' > $NOME_ARQUIVO
-        
-  
-          echo "Número da issue: ${{ github.event.issue.number }}"
-          echo "Labels: ${{ toJson(github.event.issue.labels) }}"
 
       - name: Executar script para validar evento
         run: |
@@ -33,3 +40,42 @@ jobs:
       - name: Executar script de adicionar evento
         run: |
           python3 -m backend.adicionar_evento ${{github.workspace}}/$NOME_ARQUIVO
+
+      - name: Gerar token da GitHub App
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.EVENTS_APP_ID }}
+          private-key: ${{ secrets.EVENTS_APP_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Auth gh
+        run: echo "${{ steps.app-token.outputs.token }}" | gh auth login --with-token
+
+      - name: Criar branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git switch -c adicionar-evento-issue-${{ github.event.issue.number }}
+
+      - name: Commit e push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add backend/eventos.json
+          git commit -m "Adicionar evento para issue #${{ github.event.issue.number }}"
+          git push -u origin adicionar-evento-issue-${{ github.event.issue.number }}
+      
+      - name: Criar Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Adicionar evento para issue #${{ github.event.issue.number }}" \
+            --body "Este PR adiciona um evento para a issue #${{ github.event.issue.number }}." \
+            --head adicionar-evento-issue-${{ github.event.issue.number }} \
+            --base main
+
