@@ -30,4 +30,10 @@ cabeca{
     cor-fundo: roxo;
     posicao-inferior: 0%;
     posicao-esquerda: 0;
+    alinhar-texto: centro;
+}
+.rodape p{
+    cor: branco;
+    tamanho-fonte: 14px;
+
 }
