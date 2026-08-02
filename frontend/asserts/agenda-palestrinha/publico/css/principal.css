@@ -30,5 +30,11 @@ head {
     background-color: purple;
     bottom: 0%;
     left: 0;
+    text-align: center;
+}
+
+.rodape p {
+    color: white;
+    font-size: 14px;
 }
 
