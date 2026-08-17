@@ -12,9 +12,6 @@ jobs:
     env:
       NOME_ARQUIVO: issue_data.json
     steps:
-      - name: Verificar checkout do repositório
-        uses: actions/checkout@v6
-
       - name: Configurar Python
         uses: actions/setup-python@v6
         with:
@@ -52,9 +49,6 @@ jobs:
         with:
           token: ${{ steps.app-token.outputs.token }}
 
-      - name: Auth gh
-        run: echo "${{ steps.app-token.outputs.token }}" | gh auth login --with-token
-
       - name: Criar branch
         run: |
           git config user.name "github-actions[bot]"
@@ -63,7 +57,7 @@ jobs:
 
       - name: Commit e push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs }}
         run: |
           git add backend/eventos.json
           git commit -m "Adicionar evento para issue #${{ github.event.issue.number }}"
@@ -71,7 +65,7 @@ jobs:
       
       - name: Criar Pull Request
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs }}
         run: |
           gh pr create \
             --title "Adicionar evento para issue #${{ github.event.issue.number }}" \
