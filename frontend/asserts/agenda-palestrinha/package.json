@@ -1,0 +1,17 @@
+{
+  "author": "",
+  "dependencies": {
+    "liquido": "^1.5.0"
+  },
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "agenda-palestrinha",
+  "scripts": {
+    "liquido": "liquido",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "commonjs",
+  "version": "1.0.0"
+}
