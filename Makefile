@@ -1,4 +1,4 @@
-.PHONY: install test lint fix-lint clean
+.PHONY: install test lint fix-lint clean install-npm run-server
 
 install:
 	python3 -m venv .venv
@@ -18,3 +18,9 @@ fix-lint:
 clean:
 	find . -type d -name __pycache__ -exec rm -rf {} +
 	find . -type f -name "*.pyc" -delete
+
+install-npm:
+	npm i
+
+run-server:
+	cd ./frontend/asserts/agenda-palestrinha && npm run liquido

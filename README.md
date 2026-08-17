@@ -24,6 +24,9 @@ A Agenda Palestrinha é um repositório desenvolvido para facilitar o acompanham
 ## Eventos 
 Confira os eventos que estão acontecendo na comunidade Cumbuca Dev:
 
+## Build 
+Todos os comandos usados no projeto estão listados no [Makefile](/Makefile)
+
 ## 💬 Novos Funcionalidades e Reportar Bugs
 
 Caso queira sugerir novas funcionalidades ou reportar bugs, basta criar

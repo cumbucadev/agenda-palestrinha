@@ -21,6 +21,9 @@ Agenda Palestrinha is a repository developed to make it easier to keep track of 
 
 ## Events
 Check out the events happening in the Cumbuca Dev community:
+
+## Build 
+All commands used to build and run the project are in the [Makefile](/Makefile).
 ## 💬 New Features and Reporting Bugs
 
 If you want to suggest new features or report bugs, just create a new [issue][github-issues] and we will respond there!

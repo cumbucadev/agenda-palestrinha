@@ -23,7 +23,7 @@ jobs:
           python -m pip install .[dev]
 
       - name: Converter issue para JSON
-        uses: zentered/issue-forms-body-parser@v2.2.0
+        uses: zentered/issue-forms-body-parser@v3.0.0
         id: parse
 
       - name: Salvar dados da issue em um arquivo

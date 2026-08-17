@@ -44,6 +44,11 @@ python_files = ["test_*.py"]
 python_functions = ["test_*"]
 addopts = "--cov=backend --cov-report=term-missing"
 
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["backend*"]
+exclude = ["frontend*"]
+
 [tool.coverage.run]
 source = ["backend"]
 
