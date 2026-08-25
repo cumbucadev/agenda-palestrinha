@@ -23,6 +23,14 @@
     background-color: blue;
     }
 
+    a:link {
+    color: black;
+    }
+
+    p {
+    color: black;
+    }
+
     .rodape {
     position: fixed;
     width: 100%;

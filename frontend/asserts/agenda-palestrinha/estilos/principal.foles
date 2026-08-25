@@ -21,7 +21,12 @@ cabeca{
     altura: 15%;
     posicao: relativa;
     cor-fundo: azul;
-    
+}
+ligacao:link{
+    cor: preto;
+}
+p{
+    cor: preto;
 }
 .rodape{
     posicao: fixa;
