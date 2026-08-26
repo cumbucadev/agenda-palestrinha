@@ -29,3 +29,9 @@ CLAUDE.md
 
 # Node.js
 node_modules
+
+# ruff cache
+.ruff_cache/
+
+# Pytest cache
+.pytest_cache/
