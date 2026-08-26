@@ -1,11 +1,12 @@
 {
-  "author": "",
+  "allowScripts": {
+    "better-sqlite3": true
+  },
   "dependencies": {
-    "liquido": "^1.5.0"
+    "liquido": "^1.5.1"
   },
   "description": "",
   "keywords": [],
-  "license": "ISC",
   "main": "index.js",
   "name": "agenda-palestrinha",
   "scripts": {
