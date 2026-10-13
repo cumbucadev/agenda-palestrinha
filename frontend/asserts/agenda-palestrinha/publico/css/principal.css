@@ -17,7 +17,7 @@
     }
 
     .evento {
-    width: 10%;
+    width: auto;
     height: 15%;
     position: relative;
     background-color: blue;
@@ -44,5 +44,14 @@
     .rodape     p {
     color: white;
     font-size: 14px;
+    }
+
+    .mensagem {
+    color: red;
+    font-size: 16px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin: 20px;
     }
 

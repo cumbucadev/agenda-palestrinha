@@ -4,65 +4,18 @@
         <recurso tipo="stylesheet" destino="/css/principal.css" />
         <titulo>Agenda palestrinha</titulo>
     </cabeça>
-    
     <corpo>
         <principal classe="conteudo">
+            <p classe="mensagem">{{mensagem}}</p>
+            
+            {{#cada eventos}}
             <secao classe="evento">
-                <titulo1>Evento 1</titulo1>
-                <p class="local">Remoto</p>
-                <p class="data">10/10/2026</p>
-                <p class="hora">10:00 as 18:00</p>
-                <ligacao class="link" destino="https://www.example.com/evento1">Saiba mais</ligacao>
+                <titulo1>{{nome}}</titulo1>
+                <p classe="data">{{data}}</p>
+                <p classe="local">{{local}}</p>
+                <ligação destino="{{URL}}">{{URL}}</ligação>
             </secao>
-            <secao classe="evento">
-                <titulo1>Evento 2</titulo1>
-                <p class="local">Presencial</p>
-                <p class="data">11/10/2026</p>
-                <p class="hora">09:00 as 17:00</p>
-                <ligacao class="link" destino="https://www.example.com/evento2">Saiba mais</ligacao>
-            </secao>
-            <secao classe="evento">
-                <titulo1>Evento 3</titulo1>
-                <p class="local">Remoto</p>
-                <p class="data">12/10/2026</p>
-                <p class="hora">14:00 as 22:00</p>
-                <ligacao class="link" destino="https://www.example.com/evento3">Saiba mais</ligacao>
-            </secao>
-            <secao classe="evento">
-                <titulo1>Evento 4</titulo1>
-                <p class="local">Presencial</p>
-                <p class="data">13/10/2026</p>
-                <p class="hora">10:00 as 18:00</p>
-                <ligacao class="link" destino="https://www.example.com/evento4">Saiba mais</ligacao>
-            </secao>
-            <secao classe="evento">
-                <titulo1>Evento 5</titulo1>
-                <p class="local">Remoto</p>
-                <p class="data">14/10/2026</p>
-                <p class="hora">14:00 as 22:00</p>
-                <ligacao class="link" destino="https://www.example.com/evento5">Saiba mais</ligacao>
-            </secao>
-            <secao classe="evento">
-                <titulo1>Evento 6</titulo1>
-                <p class="local">Presencial</p>
-                <p class="data">15/10/2026</p>
-                <p class="hora">09:00 as 17:00</p>
-                <ligacao class="link" destino="https://www.example.com/evento6">Saiba mais</ligacao>
-            </secao>
-            <secao classe="evento">
-                <titulo1>Evento 7</titulo1>
-                <p class="local">Remoto</p>
-                <p class="data">16/10/2026</p>
-                <p class="hora">14:00 as 22:00</p>
-                <ligacao class="link" destino="https://www.example.com/evento7">Saiba mais</ligacao>
-            </secao>
-            <secao classe="evento">
-                <titulo1>Evento 8</titulo1>
-                <p class="local">Presencial</p>
-                <p class="data">17/10/2026</p>
-                <p class="hora">10:00 as 18:00</p>
-                <ligacao class="link" destino="https://www.example.com/evento8">Saiba mais</ligacao>
-            </secao>
+            {{/cada}}
         </principal>
         <rodape classe="rodape">
             <p>Criado com Liqido</p>

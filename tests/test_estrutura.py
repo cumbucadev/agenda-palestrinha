@@ -15,4 +15,4 @@ def test_eventos_json_existe():
 
 def test_eventos_json_e_lista_valida():
     dados = json.loads(CAMINHO_EVENTOS.read_text())
-    assert isinstance(dados, list)
+    assert isinstance(dados, dict)

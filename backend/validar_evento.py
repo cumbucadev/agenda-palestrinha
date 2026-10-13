@@ -71,12 +71,24 @@ def validar_datas(evento):
     return True
 
 
+def _carregar_eventos(caminho_eventos):
+    with open(caminho_eventos, encoding="utf-8") as f:
+        dados = json.load(f)
+
+    if isinstance(dados, dict):
+        dados = dados.get("eventos", [])
+
+    if not isinstance(dados, list):
+        raise TypeError("O arquivo de eventos deve conter uma lista de eventos.")
+
+    return dados
+
+
 def validar_duplicidade(evento, caminho_eventos=None):
     if caminho_eventos is None:
         caminho_eventos = os.path.join(BASE_DIR, "banco_de_dados", "eventos.json")
 
-    with open(caminho_eventos, encoding="utf-8") as f:
-        eventos_existentes = json.load(f)
+    eventos_existentes = _carregar_eventos(caminho_eventos)
 
     nome = evento["nome-do-evento"]["text"]
     for e in eventos_existentes:

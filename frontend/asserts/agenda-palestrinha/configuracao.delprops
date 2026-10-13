@@ -1,6 +1,6 @@
 // Configuração da aplicação em si.
 liquido.arquetipo = 'mvc'
-liquido.linguagem = 'pituguês'
+liquido.linguagem = 'delégua'
 liquido.aplicacao.nome = 'agenda-palestrinha'
 liquido.aplicacao.versao = '0.0.0'
 liquido.aplicacao.descricao = 'A minha aplicação é um MVC.'
