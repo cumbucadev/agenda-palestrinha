@@ -2,11 +2,14 @@
   "allowScripts": {
     "better-sqlite3": true
   },
+  "author": "",
   "dependencies": {
-    "liquido": "^1.5.1"
+    "@designliquido/delegua-json": "^0.3.1",
+    "liquido": "^1.5.2"
   },
   "description": "",
   "keywords": [],
+  "license": "ISC",
   "main": "index.js",
   "name": "agenda-palestrinha",
   "scripts": {

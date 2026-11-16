@@ -1,4 +1,0 @@
-funcao rota_inicial(requisicao, resposta):
-    resposta.lmht({"nome": "mundo"})
-
-liquido.rotaGet(rota_inicial)

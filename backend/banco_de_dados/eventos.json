@@ -1,1 +1,11 @@
-[]
+{
+  "eventos": [
+    {
+      "id": 1,
+      "nome": "Evento de Tecnologia",
+      "data": "2026-05-15",
+      "local": "Centro de Convenções",
+      "URL": "https://www.eventodetecnologia.com"
+    }
+  ]
+}

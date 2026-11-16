@@ -1,0 +1,12 @@
+liquido.rotaGet(funcao(requisicao, resposta) {
+    var json = importar('json');
+
+    var dados = json.importarArquivoJson('../../../backend/banco_de_dados/eventos.json');
+    se (tamanho(dados.eventos) == 0) {
+        resposta.lmht({ "mensagem": "Nenhum evento encontrado." }).status(200);
+        escrever("Nenhum evento encontrado.");
+    }
+    senão {
+        resposta.lmht({ "eventos": dados.eventos }).status(200);
+    }
+})

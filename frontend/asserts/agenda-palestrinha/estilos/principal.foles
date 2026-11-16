@@ -17,7 +17,7 @@ cabeca{
     posicao: relativa;
 }
 .evento{
-   largura: 10%;
+   largura: auto;
     altura: 15%;
     posicao: relativa;
     cor-fundo: azul;
@@ -41,4 +41,12 @@ p{
     cor: branco;
     tamanho-fonte: 14px;
 
+}
+.mensagem{
+    cor: vermelho;
+    tamanho-fonte: 16px;
+    posicao-superior: 50%;
+    posicao-esquerda: 50%;
+    posicao: absoluta;
+    margem: 20px;
 }

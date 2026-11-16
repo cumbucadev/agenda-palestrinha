@@ -92,7 +92,15 @@ def transformar_evento(evento_issue):
 
 def adicionar_ao_banco(evento, caminho_eventos):
     with open(caminho_eventos, encoding="utf-8") as f:
-        eventos = json.load(f)
+        dados = json.load(f)
+
+    if isinstance(dados, dict):
+        eventos = dados.get("eventos", [])
+    else:
+        eventos = dados
+
+    if not isinstance(eventos, list):
+        raise TypeError("O arquivo de eventos deve conter uma lista de eventos.")
 
     eventos.append(evento)
 
