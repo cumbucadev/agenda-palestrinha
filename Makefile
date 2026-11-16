@@ -1,19 +1,18 @@
 .PHONY: install test lint fix-lint clean install-npm run-server
 
 install:
-	python3 -m venv .venv
-	.venv/bin/pip install -e ".[dev]"
+	uv sync --extra dev
 
 test:
-	.venv/bin/pytest tests/ -v
+	uv run pytest
 
 lint:
-	.venv/bin/ruff check .
-	.venv/bin/ruff format --check .
+	uv run ruff check .
+	uv run ruff format --check .
 
 fix-lint:
-	.venv/bin/ruff check --fix .
-	.venv/bin/ruff format .
+	uv run ruff check --fix .
+	uv run ruff format .
 
 clean:
 	find . -type d -name __pycache__ -exec rm -rf {} +
